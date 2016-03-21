@@ -20,7 +20,7 @@ function query($query)
 }
 
 
-function confirm($result)
+function is_db_error($result)
 {
     global $connection;
     if (!$result) {
@@ -37,4 +37,15 @@ function escape_string($string)
 function fetch_array($result)
 {
     return mysqli_fetch_array($result);
+}
+
+function get_products()
+{
+    $query = query("SELECT * FROM products");
+    if (!is_db_error($query)) {
+        while ($row = fetch_array($query)) {
+            $products[] = $row;
+        }
+    }
+    return $products;
 }

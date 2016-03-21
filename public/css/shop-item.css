@@ -22,7 +22,8 @@ body {
     padding: 0;
 }
 
-.thumbnail .caption-full {
+.thumbnail .caption-full,
+.buy_now {
     padding: 9px;
     color: #333;
 }
