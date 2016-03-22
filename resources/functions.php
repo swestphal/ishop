@@ -49,3 +49,24 @@ function get_products()
     }
     return $products;
 }
+
+function get_categories()
+{
+    $query = query("SELECT * FROM categories");
+    if (!is_db_error($query)) {
+        while ($row = fetch_array($query)) {
+            $categories[] = $row;
+        }
+    }
+    return $categories;
+}
+
+
+function get_item()
+{
+    $query = query("SELECT * FROM products WHERE product_id=" . escape_string($_GET['id']) . " LIMIT 1");
+    if (!is_db_error($query)) {
+
+        return (mysqli_fetch_assoc($query));
+    }
+}
